@@ -20,10 +20,10 @@ class PSO:
         if self.neighborhood_topology == 'STAR':
             ''' 
             1 center node connects to other nodes
-            '''
+            ''' 
 
             pbest_value = float('inf')
-            pbest_position = np.zeros(self.dims)
+            pbest_position = np.random.uniform(low=test_function.search_domain[0], high=test_function.search_domain[1], size=dims)
             for par in self.particles:
                 par_value = self.fitness_function.evaluate(par.current_position)
                 if par_value < pbest_value:
