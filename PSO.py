@@ -12,6 +12,7 @@ class PSO:
         self.gbest_value = float('inf')
         self.fitness_function = test_function
         self.neighborhood_topology = neighborhood_topology
+        self.dims = dims
 
     def update_pbests(self):
         # Evaluate each particle current value
@@ -22,7 +23,7 @@ class PSO:
             '''
 
             pbest_value = float('inf')
-            pbest_position = None
+            pbest_position = np.zeros(self.dims)
             for par in self.particles:
                 par_value = self.fitness_function.evaluate(par.current_position)
                 if par_value < pbest_value:
@@ -92,3 +93,7 @@ class PSO:
         print('Best fitness:', self.gbest_value)
         print('Global minimum:', self.fitness_function.global_minimum)
         print('Distance:', abs(self.gbest_value - self.fitness_function.global_minimum))
+
+
+
+
